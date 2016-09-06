@@ -76,7 +76,7 @@ import DTFoundation
         
         do
         {
-            try parseData(data)
+            let _ = try parseData(data)
         }
         catch
         {

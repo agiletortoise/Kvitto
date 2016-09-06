@@ -70,6 +70,6 @@ internal func _dateFromRFC3339String(_ string: String) -> Date?
     let rfc3339DateFormatter = DateFormatter()
     rfc3339DateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
     rfc3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-    rfc3339DateFormatter.timeZone = NSTimeZone(secondsFromGMT: 0)
+    rfc3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
     return rfc3339DateFormatter.date(from: string)
 }

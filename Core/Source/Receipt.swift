@@ -94,7 +94,7 @@ An iTunes store sales receipt.
         
         do
         {
-            try parseData(data)
+            let _ = try parseData(data)
         }
         catch
         {
@@ -108,7 +108,7 @@ An iTunes store sales receipt.
     public convenience init?(contentsOfURL URL: Foundation.URL)
     {
         guard let   data = try? Data(contentsOf: URL),
-            let container = PKCS7Container(data: data as NSData),
+            let container = PKCS7Container(data: (data as NSData) as Data),
             let payloadData = container.payloadData
         else
         {
@@ -151,7 +151,7 @@ An iTunes store sales receipt.
         switch(type)
         {
             case 0:
-                receiptType = try _stringFromData(data)
+                receiptType = try _stringFromData(data) as NSString
             
             case 2:
                 bundleIdentifier = try _stringFromData(data)
@@ -167,13 +167,13 @@ An iTunes store sales receipt.
                 SHA1Hash = NSData(data: data) as Data
             
             case 10:
-                ageRating = try _stringFromData(data)
+                ageRating = try _stringFromData(data) as NSString
             
             case 12:
                 receiptCreationDate = try _dateFromData(data)
             
             case 17:
-                guard let IAP = InAppPurchaseReceipt(data: data as NSData)
+                guard let IAP = InAppPurchaseReceipt(data: (data as NSData) as Data)
                 else
                 {
                     throw ReceiptParsingError.invalidInAppPurchases
