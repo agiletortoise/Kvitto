@@ -10,7 +10,7 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target = '8.0'
   spec.license      = 'BSD'
   spec.requires_arc = true
-  spec.dependency 'DTFoundation/DTASN1', '~>1.7.9'
+  spec.dependency 'DTFoundation/DTASN1', '~>1.7.10'
 
   spec.subspec 'Core' do |ss|
     ss.ios.deployment_target = '8.0'
